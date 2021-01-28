@@ -8,7 +8,7 @@
     --gris:     #E8EAEF;
     --grisfoncé:#9597A6;
 }
-/*fdb7cc*/
+
 
 body, html{
     font-size:10px;
@@ -152,29 +152,7 @@ a{
     height: auto;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*----------------------------------------------------------Navbar--------------------------------------------------------*/
-
-
-
-
 
 .btn{
     position:relative;
@@ -344,23 +322,8 @@ a{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 .presentation_btn{
 }
-
-
-
 
 
 
@@ -1206,45 +1169,6 @@ svg{
         margin-bottom:20px;
     }
 }
-
-
-/*
-.inspi{
-    background-color: black;
-}
-.slider{
-    width: 1050px;
-    overflow: hidden;
-    margin: 50px auto;
-}
-.slides{ /*slider-inner*//*
-    width: calc(150px*20);
-    animation: anim 10s infinite;
-}
-
-.slide{/*slider-img*//*
-    float:left;
-    padding: 1em;
-}
-.slide img{
-    width: 150px;
-}
-
-
-
-@keyframes anim{
-    0%{
-        transform:translateX(0);
-    }
-    99%{
-        transform:translateX(-2250px);
-    }
-    100%{
-        transform:translateX(0);
-
-    }
-}*/
-
 
 
 
