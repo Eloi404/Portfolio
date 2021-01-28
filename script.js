@@ -6,6 +6,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 let iframe = document.querySelectorAll(".video");
 
 let player;
+/*
 function onYouTubePlayerAPIReady() {
 	for(let i=0; i<iframe.length; i++){
 		player = new YT.Player(iframe[i],  {
@@ -15,8 +16,16 @@ function onYouTubePlayerAPIReady() {
 		});
 	}
 }
+*/
 
-
+function onYouTubePlayerAPIReady() {
+		player = new YT.Player('video',  {
+			events: {
+				'onReady': onPlayerReady
+			}
+		});
+}
+/*
 function onPlayerReady(event) {
     window.addEventListener("click", function(e){
 		for(let i=0; i<iframe.length; i++){
@@ -24,9 +33,13 @@ function onPlayerReady(event) {
 		}  
 	});
 }
+*/
 
-
-
+function onPlayerReady(event) {
+    window.addEventListener("click", function(e){
+			player.pauseVideo();
+	});
+}
 
 
 
