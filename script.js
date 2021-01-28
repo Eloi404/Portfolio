@@ -1,38 +1,3 @@
-let video = document.getElementById("vid");
-let pausebtn = document.getElementById("pausebtn");
-pausebtn.addEventListener("click", function(e){
-	if(video.paused){
-		video.play();
-		pausebtn.src='pause.svg';
-	}
-	else{
-		video.pause();
-		pausebtn.src='play.svg';
-	}
-});
-
-
-/*video.pause();*//*
-let loader = document.querySelector(".loader-wrapper");
-window.addEventListener('load', function(){
-	loader.style.transform='translateY(-100vh)'
-	video.play();
-})
-
-*/
-
-
-window.addEventListener("scroll", function(){
-	let header = document.querySelector(".navbar")
-	header.classList.toggle("sticky", window.scrollY > 0);
-});
-
-
-
-
-
-
-
 let tag = document.createElement('script');
 tag.src = "https://www.youtube.com/player_api";
 let firstScriptTag = document.getElementsByTagName('script')[0];
@@ -52,15 +17,6 @@ function onYouTubePlayerAPIReady() {
 }
 
 
-/*
-function onPlayerReady(event) {
-    window.addEventListener("click", function(e){
-			player.pauseVideo();        
-	});
-}*/
-
-
-
 function onPlayerReady(event) {
     window.addEventListener("click", function(e){
 		for(let i=0; i<iframe.length; i++){
@@ -68,16 +24,6 @@ function onPlayerReady(event) {
 		}  
 	});
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -197,124 +143,3 @@ for (let i=0; i<btns.length; i++) {
 }
 
 
-
-
-
-
-				//------------CAROUSEL------------//
-
-let carousel = document.querySelector(".carousel_comment");
-let slides = document.querySelectorAll(".avis_comment");
-let buttonL = document.querySelector(".carousel_button_left");
-let buttonR = document.querySelector(".carousel_button_right");
-let nav = document.querySelector(".carousel_nav");
-let dots =  document.querySelectorAll(".nav_dot");
-
-
-
-let slideWidth = slides[0].getBoundingClientRect().width;
-let slidepos = (slide, index)=>{
-	slide.style.left = slideWidth * index + 'px';
-}
-slides.forEach(slidepos);
-
-
-let movetoslide = (carousel, active, targetslide) => {
-	carousel.style.transform = 'translateX(-' + targetslide.style.left + ')';
-	active.classList.remove('active');
-	targetslide.classList.add('active');
-}
-
-
-
-
-let updatedot = (currentDot, targetDot) => {
-	currentDot.classList.remove('active');
-	targetDot.classList.add('active');
-}
-
-buttonL.addEventListener('click', e =>{
-	let active = carousel.querySelector('.active')
-	let prevslide = active.previousElementSibling;
-	movetoslide(carousel, active, prevslide);
-
-	let currentDot = nav.querySelector('.active');
-	let nextdot = currentDot.previousElementSibling;
-	updatedot(currentDot, nextdot);
-});
-
-buttonR.addEventListener('click', e =>{
-	let active = carousel.querySelector('.active')
-	let nextslide = active.nextElementSibling;
-	movetoslide(carousel, active, nextslide);
-	
-	let currentDot = nav.querySelector('.active');
-	let nextdot = currentDot.nextElementSibling;
-	updatedot(currentDot, nextdot);
-
-});
-
-
-
-
-
-let slider = document.querySelector(".slider");
-let innerSlider = document.querySelector(".slides");
-
-let pressed = false;
-let startx;
-let x;
-
-slider.addEventListener('mousedown', (e)=>{
-	pressed = true;
-	startx = e.offsetX - innerSlider.offsetLeft;
-	slider.style.cursor='grabbing';
-	innerSlider.style.animation = "none";
-
-});
-
-slider.addEventListener('mouseenter', ()=>{
-	console.log("cc")
-	innerSlider.style.animation = "none";
-});
-
-slider.addEventListener('mouseenter', ()=>{
-	slider.style.cursor='grab';	
-	innerSlider.style.animation = "none";
-
-});
-
-slider.addEventListener('mouseout', ()=>{
-	innerSlider.style.animation="anim 10s infinite";	
-});
-
-slider.addEventListener('mouseup', ()=>{
-	slider.style.cursor='grab';
-	innerSlider.style.animation = "none";
-
-});
-window.addEventListener('mouseup', ()=>{
-	pressed = false;
-});
-
-window.addEventListener('mousemove', (e)=>{
-	if(!pressed) return;
-	e.preventDefault();
-
-	x = e.offsetX
-
-	innerSlider.style.left = `${x - startx}px`;
-	checkboundary()
-})
-
-
-function checkboundary(){
-	let outer = slider.getBoundingClientRect();
-	let inner = innerSlider.getBoundingClientRect();
-
-	if(parseInt(innerSlider.style.left) > 0){
-		innerSlider.style.left = '0px';
-	}else if(inner.right < outer.right){	
-		innerSlider.style.left = `-${inner.width - outer.width}px`
-	}
-}	
